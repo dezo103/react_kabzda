@@ -1,11 +1,11 @@
 import React, {useState} from 'react';
-type PropsType = {
+export type OnOffPropsType = {
     on: boolean
     onChange: (on: boolean) => void
 }
 
 
-function OnOff(props: PropsType) {
+export function OnOff(props: OnOffPropsType) {
 
     const onStyle = {
         cursor: "pointer",
@@ -45,5 +45,5 @@ function OnOff(props: PropsType) {
     )
 }
 
-export default OnOff
+//export default OnOff
 
