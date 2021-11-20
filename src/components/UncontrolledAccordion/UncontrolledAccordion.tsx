@@ -1,49 +1,40 @@
-import React from "react";
+import React, {useState} from "react";
 
 type AccordionPropsType = {
-    titleValue: string,
-    collapsed: boolean
+    titleValue: string
 }
 
+// const collapsed = true
+// eslint-disable-next-line react-hooks/rules-of-hooks
 
-function Accordion(props: AccordionPropsType) {
-    console.log('Accordion rendering');
+
+
+function UncontrolledAccordion(props: AccordionPropsType) {
+
+    let [collapsed, setCollapsed] = useState(true)
+    function changeValue(collapsed:boolean) {
+        return !collapsed;
+    }
+
         return (
             <div>
-                <AccordionTitle  title = { props.titleValue } />
-                {!props.collapsed && <AccordionBody />}
+                <AccordionTitle
+                    title = { props.titleValue }
+                    clicking = { () => {setCollapsed(changeValue)} }/>
+                {collapsed && <AccordionBody />}
             </div>
         )
 
 }
 
-
-
-// function Accordion(props: AccordionPropsType) {
-//     console.log('Accordion rendering');
-//     debugger
-//     if (props.collapsed === true) {
-//         return (
-//             <div>
-//                 <AccordionTitle  title = { props.titleValue } />
-//             </div>
-//         )
-//     }
-//     return (
-//         <div>
-//             <AccordionTitle  title = { props.titleValue } />
-//             <AccordionBody/>
-//         </div>
-//     )
-// }
-
 type AccordionTitlePropsType = {
     title: string
+    clicking: () => void
 }
 
 function AccordionTitle(props: AccordionTitlePropsType) {
     console.log('AccordionTitle rendering')
-    return <h3>{ props.title }</h3>
+    return <h3 onClick={ props.clicking }>{ props.title }</h3>
 
 }
 
@@ -58,4 +49,4 @@ function AccordionBody() {
     )
 }
 
-export default Accordion;
+export default UncontrolledAccordion;
