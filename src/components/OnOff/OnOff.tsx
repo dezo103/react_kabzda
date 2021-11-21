@@ -45,5 +45,5 @@ export function OnOff(props: OnOffPropsType) {
     )
 }
 
-//export default OnOff
+export default OnOff
 
